@@ -5,10 +5,10 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
 
 const words = [
-  "Stratégie",
-  "Bluff", 
-  "Rapidité",
-  "Fun"
+  "Simple",
+  "Rapide", 
+  "Convivial",
+  "Objectif 15"
 ];
 
 // Card data - will be replaced with actual images later

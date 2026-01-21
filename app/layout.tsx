@@ -18,14 +18,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kinz-cards.com'),
   title: {
-    default: "KINZ - Le Jeu de Cartes Stratégique",
+    default: "KINZ - Le Jeu de Cartes",
     template: "%s | KINZ"
   },
-  description: "Découvrez KINZ, le jeu de cartes stratégique qui mêle bluff, tactique et adrénaline. Affrontez vos amis dans des parties intenses.",
-  keywords: ["jeu de cartes", "KINZ", "stratégie", "bluff", "jeu de société", "cartes", "jeu tactique"],
-  authors: [{ name: "KINZ Team" }],
+  description: "Découvrez KINZ, le jeu de cartes rapide et convivial dans lequel attendre 15 n'a jamais été aussi important !",
+  keywords: ["jeu de cartes", "KINZ", "stratégie", "jeu de société", "cartes", "jeu rapide", "jeu simple"],
+  authors: [{ name: "Virgile Marty" }],
   robots: {
     index: true,
     follow: true,
@@ -38,10 +37,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://kinz-cards.com',
     siteName: 'KINZ',
-    title: 'KINZ - Le Jeu de Cartes Stratégique',
-    description: 'Découvrez KINZ, le jeu de cartes stratégique qui mêle bluff, tactique et adrénaline.',
+    title: 'KINZ - Le Jeu de Cartes',
+    description: "Découvrez KINZ, le jeu de cartes rapide et convivial dans lequel attendre 15 n'a jamais été aussi important !",
   },
 };
 

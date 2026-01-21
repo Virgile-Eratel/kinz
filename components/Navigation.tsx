@@ -42,7 +42,7 @@ export default function Navigation() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
           <a href="#" className="flex items-center">
-            <Image src="/kinzTest.png" alt="KINZ" width={100} height={100} className="h-8 w-auto" />
+            <Image src="/logo_noir.png" alt="KINZ" width={100} height={100} className="h-8 w-auto" />
           </a>
 
           <div className="hidden items-center gap-8 md:flex">

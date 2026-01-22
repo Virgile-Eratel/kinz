@@ -3,112 +3,179 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Fonts */
+  --font-sans: var(--font-clash-display);
+  --font-mono: var(--font-clash-display);
+
+  /* ===== KINZ Color Palette ===== */
+  /* Pop Colors (vibrant) */
+  --color-lagoon-pop: #00ACAC;
+  --color-scarlet-pop: #FF38B8;
+  --color-pumpkin-pop: #FF6B00;
+  --color-charbon: #0C1415;
+  
+  /* Pastel Colors (soft) */
+  --color-lagoon-pastel: #B0FFE0;
+  --color-fuschia-pastel: #FF9CF0;
+  --color-pumpkin-pastel: #FFDE61;
+  --color-sable: #FFE3C7;
+
+  /* ===== Shadcn/UI Theme Variables ===== */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-poppins);
-  --font-mono: var(--font-poppins);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Charts - Using Kinz palette */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border Radius */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* ===== Light Theme (default) ===== */
 :root {
   --radius: 0.625rem;
-  --background: oklch(0 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Background & Foreground */
+  --background: #FFE3C7;
+  --foreground: #0C1415; /* Charbon */
+  
+  /* Card */
+  --card: #FFE3C7; /* Sable */
+  --card-foreground: #0C1415; /* Charbon */
+  
+  /* Popover */
+  --popover: #FFFFFF;
+  --popover-foreground: #0C1415; /* Charbon */
+  
+  /* Primary - Lagoon Pop */
+  --primary: #00ACAC; /* Lagoon Pop */
+  --primary-foreground: #FFFFFF;
+  
+  /* Secondary - Scarlet Pop */
+  --secondary: #FF38B8; /* Scarlet Pop */
+  --secondary-foreground: #FFFFFF;
+  
+  /* Muted - Lagoon Pastel */
+  --muted: #B0FFE0; /* Lagoon Pastel */
+  --muted-foreground: #0C1415; /* Charbon */
+  
+  /* Accent - Pumpkin Pop */
+  --accent: #FF6B00; /* Pumpkin Pop */
+  --accent-foreground: #FFFFFF;
+  
+  /* Destructive - Scarlet Pop */
+  --destructive: #FF38B8; /* Scarlet Pop */
+  
+  /* Border & Input */
+  --border: #B0FFE0; /* Lagoon Pastel */
+  --input: #B0FFE0; /* Lagoon Pastel */
+  --ring: #00ACAC; /* Lagoon Pop */
+  
+  /* Charts - Using Kinz palette */
+  --chart-1: #00ACAC; /* Lagoon Pop */
+  --chart-2: #FF38B8; /* Scarlet Pop */
+  --chart-3: #FF6B00; /* Pumpkin Pop */
+  --chart-4: #FFDE61; /* Pumpkin Pastel */
+  --chart-5: #FF9CF0; /* Fuschia Pastel */
+  
+  /* Sidebar */
+  --sidebar: #FFE3C7; /* Sable */
+  --sidebar-foreground: #0C1415; /* Charbon */
+  --sidebar-primary: #00ACAC; /* Lagoon Pop */
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #B0FFE0; /* Lagoon Pastel */
+  --sidebar-accent-foreground: #0C1415; /* Charbon */
+  --sidebar-border: #B0FFE0; /* Lagoon Pastel */
+  --sidebar-ring: #00ACAC; /* Lagoon Pop */
 }
 
+/* ===== Dark Theme ===== */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Background & Foreground */
+  --background: #0C1415; /* Charbon */
+  --foreground: #FFE3C7; /* Sable */
+  
+  /* Card */
+  --card: #0C1415; /* Charbon */
+  --card-foreground: #FFE3C7; /* Sable */
+  
+  /* Popover */
+  --popover: #0C1415; /* Charbon */
+  --popover-foreground: #FFE3C7; /* Sable */
+  
+  /* Primary - Lagoon Pop */
+  --primary: #00ACAC; /* Lagoon Pop */
+  --primary-foreground: #0C1415; /* Charbon */
+  
+  /* Secondary - Scarlet Pop */
+  --secondary: #FF38B8; /* Scarlet Pop */
+  --secondary-foreground: #0C1415; /* Charbon */
+  
+  /* Muted - using Charbon with slight transparency effect */
+  --muted: #0C1415; /* Charbon */
+  --muted-foreground: #B0FFE0; /* Lagoon Pastel */
+  
+  /* Accent - Pumpkin Pop */
+  --accent: #FF6B00; /* Pumpkin Pop */
+  --accent-foreground: #0C1415; /* Charbon */
+  
+  /* Destructive - Scarlet Pop */
+  --destructive: #FF38B8; /* Scarlet Pop */
+  
+  /* Border & Input */
+  --border: #00ACAC; /* Lagoon Pop */
+  --input: #00ACAC; /* Lagoon Pop */
+  --ring: #00ACAC; /* Lagoon Pop */
+  
+  /* Charts - Using Kinz palette */
+  --chart-1: #00ACAC; /* Lagoon Pop */
+  --chart-2: #FF38B8; /* Scarlet Pop */
+  --chart-3: #FF6B00; /* Pumpkin Pop */
+  --chart-4: #FFDE61; /* Pumpkin Pastel */
+  --chart-5: #FF9CF0; /* Fuschia Pastel */
+  
+  /* Sidebar */
+  --sidebar: #0C1415; /* Charbon */
+  --sidebar-foreground: #FFE3C7; /* Sable */
+  --sidebar-primary: #00ACAC; /* Lagoon Pop */
+  --sidebar-primary-foreground: #0C1415; /* Charbon */
+  --sidebar-accent: #00ACAC; /* Lagoon Pop */
+  --sidebar-accent-foreground: #FFE3C7; /* Sable */
+  --sidebar-border: #00ACAC; /* Lagoon Pop */
+  --sidebar-ring: #00ACAC; /* Lagoon Pop */
 }
 
 @layer base {

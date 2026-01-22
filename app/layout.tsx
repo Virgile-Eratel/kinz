@@ -1,13 +1,19 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Poppins } from 'next/font/google';
- 
-const poppins = Poppins({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins',
-  display: 'swap',
+import localFont from "next/font/local";
+import LenisScrollProvider from "./providers/lenis-provider";
+
+const clashDisplay = localFont({
+  src: [
+    { path: "./fonts/ClashDisplay-Extralight.otf", weight: "200", style: "normal" },
+    { path: "./fonts/ClashDisplay-Light.otf", weight: "300", style: "normal" },
+    { path: "./fonts/ClashDisplay-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/ClashDisplay-Medium.otf", weight: "500", style: "normal" },
+    { path: "./fonts/ClashDisplay-Semibold.otf", weight: "600", style: "normal" },
+    { path: "./fonts/ClashDisplay-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-clash-display",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -50,8 +56,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <body className={`${poppins.variable} font-sans antialiased`}>
-        {children}
+      <body className={`${clashDisplay.variable} font-sans antialiased`}>
+        <LenisScrollProvider>
+          {children}
+        </LenisScrollProvider>
       </body>
     </html>
   );

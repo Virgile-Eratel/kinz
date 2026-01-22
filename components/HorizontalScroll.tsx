@@ -1,161 +1,163 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform, MotionValue } from 'motion/react';
 import Image from 'next/image';
 
-const words = [
-  "Simple",
-  "Rapide",
-  "Convivial",
-  "Objectif 15"
+// Configuration
+const CARDS = [
+  { id: 1, image: "/carteKinzPlusDix.jpg" },
+  { id: 2, image: "/carteKinzPlusHuit.jpg" },
+  { id: 3, image: "/carteKinzMoinsTrois.jpg" },
+  { id: 4, image: "/carteKinzPlusZero.jpg" },
+  { id: 5, image: "/carteKinzPasseTour.jpg" },
 ];
 
-const cards = [
-  { id: 1, image: "/kinzCardTest.png", rotation: -20 },
-  { id: 2, image: "/kinzCardTest.png", rotation: -10 },
-  { id: 3, image: "/kinzCardTest.png", rotation: 0 },
-  { id: 4, image: "/kinzCardTest.png", rotation: 10 },
-  { id: 5, image: "/kinzCardTest.png", rotation: 20 },
+const WORDS = [
+  { text: "Simple", color: "text-primary" },
+  { text: "Rapide", color: "text-accent" },
+  { text: "Convivial", color: "text-accent" },
+  { text: "Objectif 15", color: "text-primary" },
 ];
-
-const finalPositions = [-240, -120, 0, 120, 240];
-
-
-const startX = 800;
 
 export default function HorizontalScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start start", "end end"],
   });
 
-  // Words opacity - each word appears sequentially
-  const word1Opacity = useTransform(scrollYProgress, [0, 0.05, 0.35, 0.45], [0, 1, 1, 0]);
-  const word2Opacity = useTransform(scrollYProgress, [0.04, 0.12, 0.35, 0.45], [0, 1, 1, 0]);
-  const word3Opacity = useTransform(scrollYProgress, [0.11, 0.20, 0.35, 0.45], [0, 1, 1, 0]);
-  const word4Opacity = useTransform(scrollYProgress, [0.19, 0.28, 0.35, 0.45], [0, 1, 1, 0]);
+  // --- PHASE 1 : TEXTE ---
+  // Le texte reste visible pendant les premiers 40%
+  // On ne bouge pas X/Y, on joue sur l'opacité globale et le blur pour un effet "cinématique"
+  const textOpacity = useTransform(scrollYProgress, [0.3, 0.45], [1, 0]);
+  const textScale = useTransform(scrollYProgress, [0.3, 0.45], [1, 0.8]);
+  const textBlur = useTransform(scrollYProgress, [0.3, 0.45], ["0px", "10px"]);
 
-  // Words Y position - slide up into view
-  const word1Y = useTransform(scrollYProgress, [0, 0.08], [60, 0]);
-  const word2Y = useTransform(scrollYProgress, [0.05, 0.15], [60, 0]);
-  const word3Y = useTransform(scrollYProgress, [0.12, 0.22], [60, 0]);
-  const word4Y = useTransform(scrollYProgress, [0.20, 0.30], [60, 0]);
+  // --- PHASE 2 : CARTES ---
+  // L'éventail commence à s'ouvrir AVANT que le texte ait totalement disparu (Overlap à 0.35)
+  // C'est ça qui crée la fluidité.
+  const fanProgress = useTransform(scrollYProgress, [0.35, 0.8], [0, 1]);
 
-  const wordOpacities = [word1Opacity, word2Opacity, word3Opacity, word4Opacity];
-  const wordYs = [word1Y, word2Y, word3Y, word4Y];
-
-
-  // Words X position - slide left before cards appear (staggered)
-  const word1X = useTransform(scrollYProgress, [0.30, 0.38], [0, -300]);
-  const word2X = useTransform(scrollYProgress, [0.32, 0.40], [0, -300]);
-  const word3X = useTransform(scrollYProgress, [0.34, 0.42], [0, -300]);
-  const word4X = useTransform(scrollYProgress, [0.36, 0.44], [0, -300]);
-
-  const wordXs = [word1X, word2X, word3X, word4X];
-
-  // Carte 1 : arrive de 0% à 30% du scroll
-  const card1X = useTransform(scrollYProgress, [0, 0.3], [startX, finalPositions[0]]);
-  // Carte 2 : arrive de 15% à 45% du scroll  
-  const card2X = useTransform(scrollYProgress, [0.15, 0.45], [startX, finalPositions[1]]);
-  // Carte 3 : arrive de 30% à 60% du scroll
-  const card3X = useTransform(scrollYProgress, [0.30, 0.60], [startX, finalPositions[2]]);
-  // Carte 4 : arrive de 45% à 75% du scroll
-  const card4X = useTransform(scrollYProgress, [0.45, 0.75], [startX, finalPositions[3]]);
-  // Carte 5 : arrive de 60% à 90% du scroll
-  const card5X = useTransform(scrollYProgress, [0.60, 0.90], [startX, finalPositions[4]]);
-
-  const card1Opacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
-  const card2Opacity = useTransform(scrollYProgress, [0.15, 0.20], [0, 1]);
-  const card3Opacity = useTransform(scrollYProgress, [0.30, 0.35], [0, 1]);
-  const card4Opacity = useTransform(scrollYProgress, [0.45, 0.50], [0, 1]);
-  const card5Opacity = useTransform(scrollYProgress, [0.60, 0.65], [0, 1]);
-
-  const cardXs = [card1X, card2X, card3X, card4X, card5X];
-  const cardOpacities = [card1Opacity, card2Opacity, card3Opacity, card4Opacity, card5Opacity];
-
-
-  const cardsContainerOpacity = useTransform(scrollYProgress, [0.35, 0.45], [0, 1]);
-
+  // Apparition globale du paquet de cartes (fade in + légère montée)
+  const deckOpacity = useTransform(scrollYProgress, [0.35, 0.5], [0, 1]);
+  const deckY = useTransform(scrollYProgress, [0.35, 0.6], [100, 0]);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative h-[400vh] bg-background"
-      aria-label="Caractéristiques du jeu"
-    >
-      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
+    <section ref={containerRef} className="relative h-[300vh] bg-background">
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
 
-        <div className="absolute inset-0 flex items-center justify-center z-10">
-          <div className="flex flex-col items-center gap-2 md:gap-4">
-            {words.map((word, index) => (
-              <motion.div
-                key={word}
-                style={{
-                  opacity: wordOpacities[index],
-                  y: wordYs[index],
-                  x: wordXs[index]
-
-                }}
-              >
-                <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold uppercase tracking-tight">
-                  {word}
-                </h1>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Cards in fan formation - centered, large */}
+        {/* CONTAINER TEXTE */}
         <motion.div
-          style={{ opacity: cardsContainerOpacity }}
-          className="absolute inset-0 flex items-center justify-center"
+          style={{ opacity: textOpacity, scale: textScale, filter: `blur(${textBlur})` }}
+          className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none"
         >
-          <div className="relative flex items-end justify-center">
-            {cards.map((card, index) => (
-              <motion.div
-                key={card.id}
-                style={{
-                  x: cardXs[index],
-                  opacity: cardOpacities[index],
-                  rotate: card.rotation,
-                  zIndex: index + 1,
-                }}
-                className="absolute origin-bottom"
-              >
-                <CardItem image={card.image} />
-              </motion.div>
-            ))}
-          </div>
+          {WORDS.map((word, i) => (
+            <TextLine key={word.text} word={word.text} color={word.color} index={i} total={WORDS.length} scroll={scrollYProgress} />
+          ))}
         </motion.div>
 
-        {/* Progress indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-          <div className="h-1 w-32 bg-gray-200 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gray-800 rounded-full"
-              style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-            />
-          </div>
-        </div>
+        {/* CONTAINER CARTES (L'Éventail) */}
+        <motion.div
+          style={{ opacity: deckOpacity, y: deckY }}
+          className="relative z-10 flex items-end justify-center perspective-1000"
+        >
+          {CARDS.map((card, index) => {
+            // Calcul mathématique de la rotation et position pour chaque carte
+            // Pas de valeurs magiques, tout est relatif à l'index (centré autour de 0)
+            const centerOffset = index - (CARDS.length - 1) / 2; // -2, -1, 0, 1, 2
+
+            return (
+              <CardItem
+                key={card.id}
+                card={card}
+                index={index}
+                centerOffset={centerOffset}
+                progress={fanProgress}
+              />
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
 }
 
+// Sous-composant pour isoler la logique de chaque mot (plus propre)
+function TextLine({ word, color, index, total, scroll }: { word: string, color: string, index: number, total: number, scroll: MotionValue<number> }) {
+  // Séquençage simple : chaque mot a son moment de gloire entre 0 et 0.3
+  const step = 0.3 / total;
+  const start = index * step;
+  const end = start + step;
 
-function CardItem({ image }: { image: string }) {
+  // Opacité active seulement durant son créneau, sinon tamisée
+  const opacity = useTransform(scroll,
+    [start, start + step / 2, end],
+    [0.2, 1, 0.2] // Le mot actif est à 1, les autres à 0.2 (Focus effect)
+  );
+
   return (
-    <div className="relative w-[180px] h-[252px] md:w-[240px] md:h-[336px] lg:w-[400px] lg:h-[560px]">
-      <Image
-        src={image}
-        alt="Carte KINZ"
-        fill
-        className="object-fit object-scale-down"
-        sizes="(max-width: 768px) 180px, (max-width: 1024px) 240px, 300px"
-      />
-    </div>
+    <motion.h1 style={{ opacity }} className={`text-6xl md:text-8xl font-bold uppercase tracking-tight transition-colors ${color}`}>
+      {word}
+    </motion.h1>
+  )
+}
+
+interface Card {
+  id: number;
+  image: string;
+}
+
+interface CardItemProps {
+  card: Card;
+  index: number;
+  centerOffset: number;
+  progress: MotionValue<number>;
+}
+
+function CardItem({ card, index, centerOffset, progress }: CardItemProps) {
+  // --- Animation Logic ---
+  const rotation = useTransform(progress, [0, 1], [0, centerOffset * 15]);
+
+  // J'ai augmenté l'écartement (150 vs 120) pour que les cartes respirent mieux sans tailles fixes
+  const xPosition = useTransform(progress, [0, 1], [0, centerOffset * 150]);
+
+  const yPosition = useTransform(progress, [0, 1], [0, Math.abs(centerOffset) * 20]);
+
+  return (
+    <motion.div
+      style={{
+        rotate: rotation,
+        x: xPosition,
+        y: yPosition,
+        transformOrigin: "bottom center",
+        zIndex: index,
+        // 2. Suppression de la margin négative "hacky". 
+        // Comme on est en absolute au même endroit, elles s'empilent naturellement.
+        // C'est le xPosition qui va créer l'espace.
+      }}
+      className="absolute bottom-0"
+    >
+      {/* 3. Gestion de la taille responsive SANS bruteforce pixel.
+         On définit une largeur relative à l'écran (vw) ou max-width.
+         La hauteur s'adapte toute seule grâce au ratio de l'image.
+      */}
+      <div className="relative w-[40vw] max-w-[300px] shadow-2xl rounded-xl overflow-hidden border border-white/10">
+
+        {/* 4. Retrait du layout="fill".
+           On met width/height pour définir le ratio original de ton image (ex: 300x450).
+           "h-auto" assure que l'image n'est jamais déformée.
+        */}
+        <Image
+          src={card.image}
+          alt="Carte KINZ"
+          width={400} // Mets ici la largeur réelle approximative de ton image source
+          height={600} // Mets ici la hauteur réelle approximative
+          className="w-full h-auto object-cover block" // block pour éviter les espaces fantômes sous l'image
+          draggable={false} // UX: évite de "prendre" l'image en scrollant
+        />
+      </div>
+    </motion.div>
   );
 }

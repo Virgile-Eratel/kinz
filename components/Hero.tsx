@@ -13,7 +13,7 @@ export default function Hero() {
       className="relative min-h-screen w-full overflow-hidden bg-background"
       aria-label="Section d'accueil"
     >
-      <div className="absolute inset-0 hidden md:block">
+      <div className="absolute inset-0 hidden md:block p-12 rounded-md">
         <div className="relative w-full h-full">
           <Image
             src="/bgJeu1.jpeg"

@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import HorizontalScroll from '@/components/HorizontalScroll';
+import TeamSection from '@/components/TeamSection';
 import Footer from '@/components/Footer';
 import HeroParallax from '@/components/HeroParallax';
 
@@ -18,6 +19,7 @@ export default function Home() {
             <HorizontalScroll />
           </div>
         </section>
+        <TeamSection />
       </main>
       <section id="footer">
         <Footer />

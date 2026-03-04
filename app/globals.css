@@ -178,6 +178,21 @@
   --sidebar-ring: #00ACAC; /* Lagoon Pop */
 }
 
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-20px) rotate(1deg); }
+}
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0px) rotate(1deg); }
+  50% { transform: translateY(-15px) rotate(-1deg); }
+}
+.animate-float-slow {
+  animation: float-slow 3s ease-in-out infinite;
+}
+.animate-float-fast {
+  animation: float-fast 2.5s ease-in-out infinite 0.5s;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

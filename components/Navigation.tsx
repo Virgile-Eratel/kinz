@@ -36,7 +36,7 @@ export default function Navigation() {
         }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="fixed left-0 right-0 top-0 z-50 bg-background backdrop-blur-md"
+        className="fixed left-0 right-0 top-0 z-50 bg-background/95 backdrop-blur-md border-b border-foreground/10"
         role="navigation"
         aria-label="Navigation principale"
       >
@@ -50,7 +50,7 @@ export default function Navigation() {
               <a
                 key={link.name}
                 href={link.href}
-                className=" text-foreground transition-colors"
+                className="text-foreground transition-colors hover:text-pumpkin-pop"
               >
                 {link.name}
               </a>
@@ -65,15 +65,15 @@ export default function Navigation() {
           >
             <motion.span
               animate={isMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="h-px w-6 bg-[#1a1a1a]"
+              className="h-px w-6 bg-foreground"
             />
             <motion.span
               animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="h-px w-6 bg-[#1a1a1a]"
+              className="h-px w-6 bg-foreground"
             />
             <motion.span
               animate={isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="h-px w-6 bg-[#1a1a1a]"
+              className="h-px w-6 bg-foreground"
             />
           </button>
         </div>
@@ -94,7 +94,7 @@ export default function Navigation() {
               onClick={() => setIsMenuOpen(false)}
               initial={{ opacity: 0, y: 20 }}
               animate={isMenuOpen ? { opacity: 1, y: 0, transition: { delay: index * 0.1 } } : { opacity: 0, y: 20 }}
-              className="text-3xl"
+              className="text-3xl text-foreground transition-colors hover:text-pumpkin-pop"
             >
               {link.name}
             </motion.a>

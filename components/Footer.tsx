@@ -20,7 +20,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
           >
-            <h4 className="text-xs uppercase tracking-[0.2em] text-foreground">
+            <h4 className="text-xs uppercase tracking-widest text-foreground">
               Navigation
             </h4>
             <ul className="mt-6 space-y-4">
@@ -28,7 +28,7 @@ export default function Footer() {
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className="font-outfit text-sm text-foreground/60 transition-colors hover:text-foreground"
+                    className="text-sm text-foreground/60 transition-colors hover:text-pumpkin-pop"
                   >
                     {item}
                   </a>
@@ -42,7 +42,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <h4 className="text-xs uppercase tracking-[0.2em] text-foreground">
+            <h4 className="text-xs uppercase tracking-widest text-foreground">
               Suivez-nous
             </h4>
             <ul className="mt-6 space-y-4">
@@ -50,7 +50,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground/60 transition-colors hover:text-foreground"
+                    className="text-sm text-foreground/60 transition-colors hover:text-pumpkin-pop"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -66,16 +66,16 @@ export default function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-foreground/20 pt-8 md:flex-row"
+          className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-pumpkin-pop/20 pt-8 md:flex-row"
         >
           <p className="text-xs text-foreground/60">
             © 2026 KINZ. Tous droits réservés.
           </p>
           <div className="flex gap-6">
-            <a href="/about" className="text-xs text-foreground/60 hover:text-foreground">
+            <a href="/about" className="text-xs text-foreground/60 transition-colors hover:text-lagoon-pop">
               Mentions légales
             </a>
-            <a href="/privacy" className="text-xs text-foreground/60 hover:text-foreground">
+            <a href="/privacy" className="text-xs text-foreground/60 transition-colors hover:text-lagoon-pop">
               Confidentialité
             </a>
           </div>

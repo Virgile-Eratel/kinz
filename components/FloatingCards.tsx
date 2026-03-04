@@ -33,9 +33,6 @@ export default function FloatingCards() {
       aria-hidden="true"
     >
       <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
-        {/* Texte révélé entre les cartes */}
-        <KeywordsReveal scroll={scrollYProgress} />
-
         <div className="relative">
           {/* Card 2 — back (rendered first = behind) */}
           <motion.div

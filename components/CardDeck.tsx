@@ -12,7 +12,7 @@ const CARDS = [
   { id: 5, image: "/carteKinzPasseTour.jpg" },
 ];
 
-const CARD_SPACING = 80;
+const CARD_SPACING = 120;
 const ROTATION_FACTOR = 15;
 const TOTAL = CARDS.length;
 

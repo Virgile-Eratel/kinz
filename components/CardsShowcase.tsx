@@ -44,9 +44,10 @@ export default function CardsShowcase() {
   const keywordsSlideX = useTransform(scrollYProgress, [0.30, 0.45], ['0vw', '-120vw']);
   const keywordsSlideOpacity = useTransform(scrollYProgress, [0.35, 0.45], [1, 0]);
 
-  // ── Layer 3: CardDeck dealer (phase 0.35–0.95) ──
+  // ── Layer 3: CardDeck dealer (phase 0.30–0.95) ──
   // Remap so DealerCard's internal 0→1 timing maps to this window
-  const dealerProgress = useTransform(scrollYProgress, [0.35, 0.95], [0, 1]);
+  // Starts at 0.30 — synced with keywordsSlideX so cards arrive as keywords exit
+  const dealerProgress = useTransform(scrollYProgress, [0.30, 0.95], [0, 1]);
 
   if (shouldReduceMotion) {
     return (

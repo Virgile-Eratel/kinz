@@ -16,11 +16,15 @@ export default function Home() {
         <div className="block md:hidden">
           <p>TODO scroll mobile</p>
         </div>
-        <TeamSection />
+        <div data-nav-theme="dark">
+          <TeamSection />
+        </div>
       </main>
-      <section id="footer">
-        <Footer />
-      </section>
+      <div data-nav-theme="dark">
+        <section id="footer">
+          <Footer />
+        </section>
+      </div>
     </>
   );
 }

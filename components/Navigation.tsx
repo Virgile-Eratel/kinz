@@ -24,8 +24,9 @@ export default function Navigation() {
   const burgerRef = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
 
-  // Logo shrinks on scroll: 140px → 60px
-  const logoHeight = useTransform(scrollY, [0, 100], [140, 60]);
+  // Logo starts huge & centered, then shrinks and moves to top on scroll
+  const logoHeight = useTransform(scrollY, [0, 400], [500, 60]);
+  const logoY = useTransform(scrollY, [0, 400], ['25vh', '0vh']);
 
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
@@ -131,7 +132,7 @@ export default function Navigation() {
       {/* ===== FLOATING CENTERED LOGO (desktop) ===== */}
       <div className="pointer-events-none fixed inset-x-0 top-0 z-50 hidden items-center justify-center pt-3 md:flex">
         <a href="#" className="pointer-events-auto">
-          <motion.div style={{ height: logoHeight }} className="relative">
+          <motion.div style={{ height: logoHeight, y: logoY }} className="relative">
             {/* Dark logo (on light backgrounds) */}
             <Image
               src="/logo/logo_noir.png"

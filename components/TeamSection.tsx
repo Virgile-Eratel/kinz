@@ -13,11 +13,10 @@ interface TeamMember {
 }
 
 const TEAM_MEMBERS: TeamMember[] = [
-  { id: 'membre-1', name: 'Prenom Nom', roles: ['Role 1', 'Role 2'], photo: '/team/membre1.png', description: 'Description du membre 1' },
-  { id: 'membre-2', name: 'Prenom Nom', roles: ['Role 1'], photo: '/team/membre1.png', description: 'Description du membre 2' },
-  { id: 'membre-3', name: 'Prenom Nom', roles: ['Role 1', 'Role 2'], photo: '/team/membre1.png', description: 'Description du membre 3' },
-  { id: 'membre-4', name: 'Prenom Nom', roles: ['Role 1'], photo: '/team/membre1.png', description: 'Description du membre 4' },
-  { id: 'membre-5', name: 'Prenom Nom', roles: ['Role 1', 'Role 2'], photo: '/team/membre1.png', description: 'Description du membre 5' },
+  { id: 'membre-1', name: 'Virgile Marty', roles: ['Développeur', 'UX/UI Designer'], photo: '/team/membre-virgile.png', description: 'Description du membre 1' },
+  { id: 'membre-2', name: 'Philippe Cabel', roles: ['Responsable communication', 'Photographe'], photo: '/team/membre-Philippe.png', description: 'Description du membre 2' },
+  { id: 'membre-3', name: 'Chloé Leray', roles: ['Responsable Marketing', 'Data analyste'], photo: '/team/membre-chloe.png', description: 'Description du membre 3' },
+  { id: 'membre-4', name: 'Marie Caroff', roles: ['Directrice artistique'], photo: '/team/membre-marie.png', description: 'Description du membre 4' },
 ];
 
 // Total horizontal travel: (N-1) slides worth of width

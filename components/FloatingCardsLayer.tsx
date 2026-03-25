@@ -8,7 +8,7 @@ const SECONDARY_CARDS = [
   {
     src: '/carteKinzPlusDix.jpg',
     alt: 'Carte KINZ Plus Dix',
-    position: { top: '2vh', left: '3vw' } as const,
+    position: { top: '10vh', left: '3vw' } as const,
     exit: { x: '-50vw', y: '-60vh' },
     rotation: { start: -12, end: -30 },
     floatClass: 'animate-float-slow',
@@ -16,7 +16,7 @@ const SECONDARY_CARDS = [
   {
     src: '/carteKinzPlusHuit.jpg',
     alt: 'Carte KINZ Plus Huit',
-    position: { top: '5vh', right: '5vw' } as const,
+    position: { top: '13vh', right: '5vw' } as const,
     exit: { x: '50vw', y: '-55vh' },
     rotation: { start: 15, end: 35 },
     floatClass: 'animate-float-fast',
@@ -36,14 +36,6 @@ const SECONDARY_CARDS = [
     exit: { x: '55vw', y: '45vh' },
     rotation: { start: 10, end: 28 },
     floatClass: 'animate-float-fast',
-  },
-  {
-    src: '/carteKinzPasseTour.jpg',
-    alt: 'Carte KINZ Passe Tour',
-    position: { top: '1vh', left: '42vw' } as const,
-    exit: { x: '10vw', y: '-70vh' },
-    rotation: { start: 5, end: 18 },
-    floatClass: 'animate-float-mid',
   },
   {
     src: '/carteKinzBase.jpg',
@@ -72,7 +64,7 @@ const SECONDARY_CARDS = [
   {
     src: '/carteKinzMoinsTrois.jpg',
     alt: 'Carte KINZ Moins Trois',
-    position: { top: '12vh', left: '18vw' } as const,
+    position: { top: '20vh', left: '18vw' } as const,
     exit: { x: '-65vw', y: '-40vh' },
     rotation: { start: -18, end: -45 },
     floatClass: 'animate-float-mid',
@@ -80,7 +72,7 @@ const SECONDARY_CARDS = [
   {
     src: '/carteKinzPlusZero.jpg',
     alt: 'Carte KINZ Plus Zero',
-    position: { top: '10vh', right: '16vw' } as const,
+    position: { top: '18vh', right: '16vw' } as const,
     exit: { x: '60vw', y: '-35vh' },
     rotation: { start: 20, end: 42 },
     floatClass: 'animate-float-slow',
@@ -128,34 +120,30 @@ export default function FloatingCardsLayer({ scrollYProgress }: FloatingCardsLay
   const sec3Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '45vh']);
   const sec3Rot = useTransform(scrollYProgress, [0, 0.22], [10, 28]);
   const sec3Sc = useTransform(scrollYProgress, [0, 0.22], [1, 1.15]);
-  const sec4X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '10vw']);
-  const sec4Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '-70vh']);
-  const sec4Rot = useTransform(scrollYProgress, [0, 0.22], [5, 18]);
+  const sec4X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '-70vw']);
+  const sec4Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '-10vh']);
+  const sec4Rot = useTransform(scrollYProgress, [0, 0.22], [-6, -22]);
   const sec4Sc = useTransform(scrollYProgress, [0, 0.22], [1, 1.15]);
-  const sec5X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '-70vw']);
-  const sec5Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '-10vh']);
-  const sec5Rot = useTransform(scrollYProgress, [0, 0.22], [-6, -22]);
+  const sec5X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '70vw']);
+  const sec5Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '10vh']);
+  const sec5Rot = useTransform(scrollYProgress, [0, 0.22], [8, 25]);
   const sec5Sc = useTransform(scrollYProgress, [0, 0.22], [1, 1.15]);
-  const sec6X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '70vw']);
-  const sec6Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '10vh']);
-  const sec6Rot = useTransform(scrollYProgress, [0, 0.22], [8, 25]);
+  const sec6X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '-15vw']);
+  const sec6Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '65vh']);
+  const sec6Rot = useTransform(scrollYProgress, [0, 0.22], [-4, -15]);
   const sec6Sc = useTransform(scrollYProgress, [0, 0.22], [1, 1.15]);
-  const sec7X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '-15vw']);
-  const sec7Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '65vh']);
-  const sec7Rot = useTransform(scrollYProgress, [0, 0.22], [-4, -15]);
+  const sec7X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '-65vw']);
+  const sec7Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '-40vh']);
+  const sec7Rot = useTransform(scrollYProgress, [0, 0.22], [-18, -45]);
   const sec7Sc = useTransform(scrollYProgress, [0, 0.22], [1, 1.15]);
-  const sec8X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '-65vw']);
-  const sec8Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '-40vh']);
-  const sec8Rot = useTransform(scrollYProgress, [0, 0.22], [-18, -45]);
+  const sec8X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '60vw']);
+  const sec8Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '-35vh']);
+  const sec8Rot = useTransform(scrollYProgress, [0, 0.22], [20, 42]);
   const sec8Sc = useTransform(scrollYProgress, [0, 0.22], [1, 1.15]);
-  const sec9X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '60vw']);
-  const sec9Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '-35vh']);
-  const sec9Rot = useTransform(scrollYProgress, [0, 0.22], [20, 42]);
+  const sec9X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '75vw']);
+  const sec9Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '30vh']);
+  const sec9Rot = useTransform(scrollYProgress, [0, 0.22], [13, 32]);
   const sec9Sc = useTransform(scrollYProgress, [0, 0.22], [1, 1.15]);
-  const sec10X = useTransform(scrollYProgress, [0, 0.22], ['0vw', '75vw']);
-  const sec10Y = useTransform(scrollYProgress, [0, 0.22], ['0vh', '30vh']);
-  const sec10Rot = useTransform(scrollYProgress, [0, 0.22], [13, 32]);
-  const sec10Sc = useTransform(scrollYProgress, [0, 0.22], [1, 1.15]);
 
   const secTransforms = [
     { x: sec0X, y: sec0Y, rotate: sec0Rot, scale: sec0Sc },
@@ -168,7 +156,6 @@ export default function FloatingCardsLayer({ scrollYProgress }: FloatingCardsLay
     { x: sec7X, y: sec7Y, rotate: sec7Rot, scale: sec7Sc },
     { x: sec8X, y: sec8Y, rotate: sec8Rot, scale: sec8Sc },
     { x: sec9X, y: sec9Y, rotate: sec9Rot, scale: sec9Sc },
-    { x: sec10X, y: sec10Y, rotate: sec10Rot, scale: sec10Sc },
   ];
 
   // ── KeywordsReveal transforms ──

@@ -11,7 +11,7 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroParallax />
-        <div className="hidden md:block">
+        <div className="hidden md:block relative z-10 -mt-[40vh]">
           <CardsShowcase />
         </div>
         <div className="block md:hidden">

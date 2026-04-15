@@ -1,6 +1,9 @@
 import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
-import HorizontalScroll from '@/components/HorizontalScroll';
+import CardsShowcase from '@/components/CardsShowcase';
+import CardsShowcaseMobile from '@/components/CardsShowcaseMobile';
+import ImageMarquee from '@/components/ImageMarquee';
+import BuySection from '@/components/BuySection';
+import TeamSection from '@/components/TeamSection';
 import Footer from '@/components/Footer';
 import HeroParallax from '@/components/HeroParallax';
 
@@ -10,18 +13,27 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroParallax />
-        <section id="features">
-          <div className="block md:hidden">
-            <p>TODO scroll mobile</p>
+        <div id="rules" className="relative">
+          <div className="hidden md:block relative z-10 -mt-[40vh]">
+            <CardsShowcase />
           </div>
-          <div className="hidden md:block">
-            <HorizontalScroll />
+          <div className="block md:hidden relative z-10 -mt-[25vh]">
+            <CardsShowcaseMobile />
           </div>
-        </section>
+        </div>
+        <ImageMarquee />
+        <div data-nav-theme="dark">
+          <BuySection />
+        </div>
+        <div data-nav-theme="dark">
+          <TeamSection />
+        </div>
       </main>
-      <section id="footer">
-        <Footer />
-      </section>
+      <div data-nav-theme="dark">
+        <section id="footer">
+          <Footer />
+        </section>
+      </div>
     </>
   );
 }

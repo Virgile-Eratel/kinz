@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.claude_review_state.json
+
+.claude
+
+/doc/*
+/docs/*

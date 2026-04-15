@@ -6,7 +6,6 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 
 const mainLinks = [
   { name: 'Accueil', href: '#' },
-  { name: 'Cartes', href: '#cards' },
   { name: 'Règles', href: '#rules' },
   { name: 'Équipe', href: '#team' },
   { name: 'Acheter', href: '#buy' },
@@ -22,6 +21,7 @@ export default function Navigation() {
   const [useLightLogo, setUseLightLogo] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const burgerRef = useRef<HTMLButtonElement>(null);
+  const mobileBurgerRef = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
 
   // Logo starts huge & centered, then shrinks and moves to top on scroll
@@ -86,12 +86,11 @@ export default function Navigation() {
   useEffect(() => {
     if (!isMenuOpen) return;
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node) &&
-        burgerRef.current &&
-        !burgerRef.current.contains(e.target as Node)
-      ) {
+      const target = e.target as Node;
+      const inDropdown = dropdownRef.current?.contains(target);
+      const inDesktopBurger = burgerRef.current?.contains(target);
+      const inMobileBurger = mobileBurgerRef.current?.contains(target);
+      if (!inDropdown && !inDesktopBurger && !inMobileBurger) {
         closeMenu();
       }
     };
@@ -166,7 +165,7 @@ export default function Navigation() {
         aria-expanded={isMenuOpen}
       >
         <motion.span
-          animate={isMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+          animate={isMenuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
           transition={{ duration: 0.25 }}
           className={`h-px w-6 transition-colors duration-300 ${isMenuOpen ? 'bg-sable' : burgerColor}`}
         />
@@ -176,7 +175,7 @@ export default function Navigation() {
           className={`h-px w-6 transition-colors duration-300 ${isMenuOpen ? 'bg-sable' : burgerColor}`}
         />
         <motion.span
-          animate={isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+          animate={isMenuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
           transition={{ duration: 0.25 }}
           className={`h-px w-6 transition-colors duration-300 ${isMenuOpen ? 'bg-sable' : burgerColor}`}
         />
@@ -250,13 +249,14 @@ export default function Navigation() {
           </div>
         </a>
         <button
+          ref={mobileBurgerRef}
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className="pointer-events-auto flex h-10 w-10 flex-col items-center justify-center gap-1.5"
           aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={isMenuOpen}
         >
           <motion.span
-            animate={isMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+            animate={isMenuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
             transition={{ duration: 0.25 }}
             className={`h-px w-6 transition-colors duration-300 ${isMenuOpen ? 'bg-sable' : burgerColor}`}
           />
@@ -266,7 +266,7 @@ export default function Navigation() {
             className={`h-px w-6 transition-colors duration-300 ${isMenuOpen ? 'bg-sable' : burgerColor}`}
           />
           <motion.span
-            animate={isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+            animate={isMenuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
             transition={{ duration: 0.25 }}
             className={`h-px w-6 transition-colors duration-300 ${isMenuOpen ? 'bg-sable' : burgerColor}`}
           />

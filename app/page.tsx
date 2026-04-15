@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation';
 import CardsShowcase from '@/components/CardsShowcase';
+import CardsShowcaseMobile from '@/components/CardsShowcaseMobile';
 import ImageMarquee from '@/components/ImageMarquee';
 import BuySection from '@/components/BuySection';
 import TeamSection from '@/components/TeamSection';
@@ -12,11 +13,13 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroParallax />
-        <div className="hidden md:block relative z-10 -mt-[40vh]">
-          <CardsShowcase />
-        </div>
-        <div className="block md:hidden">
-          <p>TODO scroll mobile</p>
+        <div id="rules" className="relative">
+          <div className="hidden md:block relative z-10 -mt-[40vh]">
+            <CardsShowcase />
+          </div>
+          <div className="block md:hidden relative z-10 -mt-[25vh]">
+            <CardsShowcaseMobile />
+          </div>
         </div>
         <ImageMarquee />
         <div data-nav-theme="dark">

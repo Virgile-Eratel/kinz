@@ -3,17 +3,31 @@
 import Image from 'next/image';
 import { motion } from 'motion/react';
 
-const IMAGES = [
+const IMAGES_TOP = [
   { src: '/imagesBg/DSCF4147_11zon.jpg', alt: 'Boite KINZ dans la verdure' },
-  { src: '/imagesBg/DSCF4158_11zon.jpg', alt: 'Main tenant des cartes KINZ' },
   { src: '/imagesBg/DSCF4174_11zon.jpg', alt: 'Cartes KINZ sur galets' },
-  { src: '/imagesBg/DSCF4177_11zon.jpg', alt: 'Carte 15 gros plan' },
   { src: '/imagesBg/DSCF4181_11zon.jpg', alt: 'Carte KINZ sur baby-foot' },
-  { src: '/imagesBg/DSCF4191_11zon.jpg', alt: 'Joueurs avec cartes en main' },
+  { src: '/imagesBg/DSCF4140.jpg', alt: 'Carte 15 mise en avant devant la boite KINZ sur une table en exterieur' },
+  { src: '/imagesBg/DSCF4222.jpg', alt: 'Logo Ynov Campus vegetalise avec cartes KINZ nichees dans les feuilles' },
 ];
 
-function MarqueeRow({ direction, speed }: { direction: 'left' | 'right'; speed: number }) {
-  const items = [...IMAGES, ...IMAGES];
+const IMAGES_BOTTOM = [
+  { src: '/imagesBg/DSCF4158_11zon.jpg', alt: 'Main tenant des cartes KINZ' },
+  { src: '/imagesBg/DSCF4177_11zon.jpg', alt: 'Carte 15 gros plan' },
+  { src: '/imagesBg/DSCF4191_11zon.jpg', alt: 'Joueurs avec cartes en main' },
+  { src: '/imagesBg/DSCF4162.jpg', alt: 'Deux mains echangeant des cartes KINZ au-dessus de galets' },
+];
+
+function MarqueeRow({
+  direction,
+  speed,
+  images,
+}: {
+  direction: 'left' | 'right';
+  speed: number;
+  images: { src: string; alt: string }[];
+}) {
+  const items = [...images, ...images];
 
   return (
     <div className="flex overflow-hidden">
@@ -58,8 +72,8 @@ export default function ImageMarquee() {
 
       <div className="py-20 md:py-28 -rotate-2 scale-105">
         <div className="flex flex-col gap-6">
-          <MarqueeRow direction="left" speed={30} />
-          <MarqueeRow direction="right" speed={35} />
+          <MarqueeRow direction="left" speed={30} images={IMAGES_TOP} />
+          <MarqueeRow direction="right" speed={35} images={IMAGES_BOTTOM} />
         </div>
       </div>
 

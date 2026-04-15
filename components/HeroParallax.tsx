@@ -98,11 +98,11 @@ export default function HeroParallax() {
           style={{ y: y1 }}
         >
           <Image
-            src="/parallaxe/Parallaxe-01.png"
+            src="/parallaxe/Parallaxe-01New.png"
             alt="Cartes premier plan"
             fill
             sizes="100vw"
-            className="object-cover object-top"
+            className="object-contain object-bottom"
           />
         </motion.div>
       </div>

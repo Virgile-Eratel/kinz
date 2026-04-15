@@ -9,14 +9,15 @@ interface TeamMember {
   name: string;
   roles: string[];
   photo: string;
-  description: string;
 }
 
 const TEAM_MEMBERS: TeamMember[] = [
-  { id: 'membre-1', name: 'Virgile Marty', roles: ['Développeur', 'UX/UI Designer'], photo: '/team/membre-virgile.png', description: 'Description du membre 1' },
-  { id: 'membre-2', name: 'Philippe Cabel', roles: ['Responsable communication', 'Photographe'], photo: '/team/membre-Philippe.png', description: 'Description du membre 2' },
-  { id: 'membre-3', name: 'Chloé Leray', roles: ['Responsable Marketing', 'Data analyste'], photo: '/team/membre-chloe.png', description: 'Description du membre 3' },
-  { id: 'membre-4', name: 'Marie Caroff', roles: ['Directrice artistique'], photo: '/team/membre-marie.png', description: 'Description du membre 4' },
+  { id: 'membre-1', name: 'Virgile Marty', roles: ['Développeur', 'UX/UI Designer'], photo: '/team/membre-virgile.png' },
+  { id: 'membre-2', name: 'Philippe Cabel', roles: ['Responsable communication', 'Photographe'], photo: '/team/membre-Philippe.png' },
+  { id: 'membre-3', name: 'Chloé Leray', roles: ['Responsable Marketing', 'Data analyste'], photo: '/team/membre-chloe.png' },
+  { id: 'membre-4', name: 'Marie Caroff', roles: ['Directrice artistique'], photo: '/team/membre-marie.png' },
+  { id: 'membre-5', name: 'Alexande Dubourg', roles: ['Graphiste éxecutif web'], photo: '/team/membre-Alex.png' },
+  { id: 'membre-6', name: 'Margot Deschamps', roles: ['Graphiste éxecutif print'], photo: '/team/membre-Margot.png' },
 ];
 
 // Total horizontal travel: (N-1) slides worth of width
@@ -69,9 +70,9 @@ export default function TeamSection() {
 
         {/* z-20: Gradient overlays */}
         <div className="absolute inset-x-0 bottom-0 z-20 h-[50%] pointer-events-none"
-             style={{ background: 'linear-gradient(to top, #0C1415 0%, rgba(12,20,21,0.8) 40%, rgba(12,20,21,0) 100%)' }} />
+          style={{ background: 'linear-gradient(to top, #0C1415 0%, rgba(12,20,21,0.8) 40%, rgba(12,20,21,0) 100%)' }} />
         <div className="absolute inset-y-0 left-0 z-20 w-[30%] pointer-events-none"
-             style={{ background: 'linear-gradient(to right, rgba(12,20,21,0.4) 0%, transparent 100%)' }} />
+          style={{ background: 'linear-gradient(to right, rgba(12,20,21,0.4) 0%, transparent 100%)' }} />
 
         {/* z-30: Names layer (scroll-driven) */}
         <motion.div
@@ -151,9 +152,6 @@ function NameSlide({
             </span>
           ))}
         </div>
-        <p className="text-sable/70 mt-4 max-w-md text-sm leading-relaxed md:hidden">
-          {member.description}
-        </p>
       </motion.div>
     </div>
   );

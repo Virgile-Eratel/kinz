@@ -28,38 +28,38 @@ interface HandDemoLayerProps {
 }
 
 export default function HandDemoLayer({ scrollYProgress }: HandDemoLayerProps) {
-  // Losing hand
-  const losingProgress = useTransform(scrollYProgress, [0.36, 0.52], [0, 1]);
-  const losingOpacity = useTransform(scrollYProgress, [0.52, 0.58], [1, 0]);
-  const losingSlideX = useTransform(scrollYProgress, [0.52, 0.58], [0, 400]);
+  // Winning hand (first)
+  const winningProgress = useTransform(scrollYProgress, [0.36, 0.52], [0, 1]);
+  const winningOpacity = useTransform(scrollYProgress, [0.52, 0.58], [1, 0]);
+  const winningSlideX = useTransform(scrollYProgress, [0.52, 0.58], [0, 400]);
 
-  // Winning hand
-  const winningProgress = useTransform(scrollYProgress, [0.58, 0.74], [0, 1]);
-  const winningOpacity = useTransform(scrollYProgress, [0.74, 0.82], [1, 0]);
+  // Losing hand (second)
+  const losingProgress = useTransform(scrollYProgress, [0.58, 0.74], [0, 1]);
+  const losingOpacity = useTransform(scrollYProgress, [0.74, 0.82], [1, 0]);
 
   return (
     <div className="absolute right-0 top-0 h-full w-[65%] z-20 flex items-center justify-center pointer-events-none">
-      {/* Losing hand */}
-      <motion.div
-        style={{ opacity: losingOpacity, x: losingSlideX }}
-        className="absolute inset-0 flex items-center justify-center"
-      >
-        <HandFan
-          cards={LOSING_HAND}
-          resultType="error"
-          progress={losingProgress}
-        />
-      </motion.div>
-
       {/* Winning hand */}
       <motion.div
-        style={{ opacity: winningOpacity }}
+        style={{ opacity: winningOpacity, x: winningSlideX }}
         className="absolute inset-0 flex items-center justify-center"
       >
         <HandFan
           cards={WINNING_HAND}
           resultType="success"
           progress={winningProgress}
+        />
+      </motion.div>
+
+      {/* Losing hand */}
+      <motion.div
+        style={{ opacity: losingOpacity }}
+        className="absolute inset-0 flex items-center justify-center"
+      >
+        <HandFan
+          cards={LOSING_HAND}
+          resultType="error"
+          progress={losingProgress}
         />
       </motion.div>
     </div>

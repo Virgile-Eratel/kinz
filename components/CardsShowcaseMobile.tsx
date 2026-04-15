@@ -112,10 +112,10 @@ export default function CardsShowcaseMobile() {
       <div ref={handsRef} className="relative" style={{ height: '400vh' }}>
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <HandScene
-            cards={LOSING_HAND}
-            tone="error"
-            label="Perdu"
-            description="Une carte action reste en main, la manche est perdue."
+            cards={WINNING_HAND}
+            tone="success"
+            label="Ça gagne !"
+            description="Le total fait 15 pile — victoire."
             scrollYProgress={scrollYProgress}
             cardsIn={[0.0, 0.1]}
             labelIn={[0.12, 0.2]}
@@ -124,10 +124,10 @@ export default function CardsShowcaseMobile() {
             iconRange={[0.18, 0.24]}
           />
           <HandScene
-            cards={WINNING_HAND}
-            tone="success"
-            label="Ça gagne !"
-            description="Le total fait 15 pile — victoire."
+            cards={LOSING_HAND}
+            tone="error"
+            label="Perdu"
+            description="Une carte action reste en main, la manche est perdue."
             scrollYProgress={scrollYProgress}
             cardsIn={[0.45, 0.55]}
             labelIn={[0.57, 0.65]}

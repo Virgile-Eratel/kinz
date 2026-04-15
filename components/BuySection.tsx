@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'motion/react';
 import { ExternalLink } from 'lucide-react';
 
-const AMAZON_URL =
+export const AMAZON_URL =
   'https://www.amazon.fr/M%C3%A9tallique-soci%C3%A9t%C3%A9-cartes-famille-joueurs/dp/B08WKF5HZR';
 
 export default function BuySection() {

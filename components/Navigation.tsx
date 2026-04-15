@@ -2,14 +2,30 @@
 
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
+import { ShoppingCart } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { AMAZON_URL } from './BuySection';
 
 const mainLinks = [
   { name: 'Accueil', href: '#' },
   { name: 'Règles', href: '#rules' },
   { name: 'Équipe', href: '#team' },
-  { name: 'Acheter', href: '#buy' },
 ];
+
+function BuyButton({ className = '' }: { className?: string }) {
+  return (
+    <a
+      href={AMAZON_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`pointer-events-auto inline-flex items-center gap-2 rounded-full bg-pumpkin-pop px-4 py-2 text-sm font-semibold text-sable shadow-lg shadow-black/10 transition-all duration-200 hover:bg-pumpkin-pop/90 hover:scale-105 ${className}`}
+      aria-label="Acheter sur Amazon"
+    >
+      <ShoppingCart className="h-4 w-4" strokeWidth={2.5} />
+      <span>Acheter</span>
+    </a>
+  );
+}
 
 const secondaryLinks = [
   { name: 'Mentions légales', href: '/mentions-legales' },
@@ -156,6 +172,11 @@ export default function Navigation() {
         </a>
       </div>
 
+      {/* ===== FLOATING BUY BUTTON (desktop) ===== */}
+      <div className="fixed top-5 z-50 hidden md:block md:right-28">
+        <BuyButton />
+      </div>
+
       {/* ===== FLOATING BURGER (desktop) ===== */}
       <button
         ref={burgerRef}
@@ -248,6 +269,8 @@ export default function Navigation() {
             />
           </div>
         </a>
+        <div className="flex items-center gap-3">
+          <BuyButton />
         <button
           ref={mobileBurgerRef}
           onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -271,6 +294,7 @@ export default function Navigation() {
             className={`h-px w-6 transition-colors duration-300 ${isMenuOpen ? 'bg-sable' : burgerColor}`}
           />
         </button>
+        </div>
       </div>
 
       {/* Mobile fullscreen overlay */}

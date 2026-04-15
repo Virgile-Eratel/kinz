@@ -129,10 +129,10 @@ function NameSlide({
         {String(index + 1).padStart(2, '0')}
       </span>
       <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 40 }}
+        initial={reducedMotion ? false : { opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         {isFirst && (
           <span className="text-xs uppercase tracking-[0.2em] text-pumpkin-pop mb-6 block font-semibold">
@@ -171,10 +171,10 @@ function PortraitSlide({
       {/* Glow behind portrait */}
       <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] rounded-full bg-pumpkin-pop/10 blur-3xl pointer-events-none" />
       <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 60 }}
+        initial={reducedMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, delay: index * 0.1 + 0.2, ease: 'easeOut' }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
         className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[85%] md:h-[92%] w-full max-w-2xl"
       >
         {/* Desktop: 3D tilt */}

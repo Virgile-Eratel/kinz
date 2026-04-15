@@ -98,7 +98,7 @@ export default function HeroParallax() {
           style={{ y: y1 }}
         >
           <Image
-            src="/parallaxe/Parallaxe-01New.png"
+            src="/parallaxe/Parallaxe-01.png"
             alt="Cartes premier plan"
             fill
             sizes="100vw"

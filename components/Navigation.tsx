@@ -12,8 +12,8 @@ const mainLinks = [
 ];
 
 const secondaryLinks = [
-  { name: 'Mentions légales', href: '/about' },
-  { name: 'Confidentialité', href: '/privacy' },
+  { name: 'Mentions légales', href: '/mentions-legales' },
+  { name: 'Confidentialité', href: '/confidentialite' },
 ];
 
 export default function Navigation() {

@@ -29,7 +29,15 @@ export default function HeroParallax() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-top"
+          className="hidden md:block object-cover object-top"
+        />
+        <Image
+          src="/parallaxe/Parallaxe-01Mobile.png"
+          alt="Cartes KINZ"
+          fill
+          priority
+          sizes="100vw"
+          className="md:hidden object-cover object-top"
         />
       </section>
     );
@@ -60,7 +68,15 @@ export default function HeroParallax() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="hidden md:block object-cover"
+          />
+          <Image
+            src="/parallaxe/Parallaxe-04Mobile.png"
+            alt="Fond de cartes KINZ"
+            fill
+            priority
+            sizes="100vw"
+            className="md:hidden object-cover"
           />
         </motion.div>
 
@@ -74,7 +90,14 @@ export default function HeroParallax() {
             alt="Cartes arrière-plan"
             fill
             sizes="100vw"
-            className="object-cover object-bottom"
+            className="hidden md:block object-cover object-bottom"
+          />
+          <Image
+            src="/parallaxe/Parallaxe-03Mobile.png"
+            alt="Cartes arrière-plan"
+            fill
+            sizes="100vw"
+            className="md:hidden object-cover object-bottom"
           />
         </motion.div>
 
@@ -88,7 +111,14 @@ export default function HeroParallax() {
             alt="Cartes plan moyen"
             fill
             sizes="100vw"
-            className="object-cover object-bottom"
+            className="hidden md:block object-cover object-bottom"
+          />
+          <Image
+            src="/parallaxe/Parallaxe-02Mobile.png"
+            alt="Cartes plan moyen"
+            fill
+            sizes="100vw"
+            className="md:hidden object-cover object-bottom"
           />
         </motion.div>
 
@@ -102,7 +132,14 @@ export default function HeroParallax() {
             alt="Cartes premier plan"
             fill
             sizes="100vw"
-            className="object-contain object-bottom"
+            className="hidden md:block object-contain object-bottom"
+          />
+          <Image
+            src="/parallaxe/Parallaxe-01Mobile.png"
+            alt="Cartes premier plan"
+            fill
+            sizes="100vw"
+            className="md:hidden object-cover object-bottom"
           />
         </motion.div>
       </div>
